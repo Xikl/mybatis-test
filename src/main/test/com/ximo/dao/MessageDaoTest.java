@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 /**
@@ -26,4 +28,13 @@ public class MessageDaoTest {
         messageDao.getMessageByCommandAndDescription("", "段子");
     }
 
+    @Test
+    public void deleteOne() throws Exception {
+        messageDao.deleteOne(3);
+    }
+
+    @Test
+    public void deleteBatch() throws Exception {
+        messageDao.deleteBatch(Arrays.asList(5,7,8));
+    }
 }

@@ -35,5 +35,42 @@ public class MessageDao {
         return messageList;
     }
 
+    /**
+     * 删除该信息
+     * @param id
+     */
+    public void deleteOne(Integer id){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = DBUtil.getSqlSession();
+            sqlSession.delete("Message.deleteOne", id);
+            //采用事务提交
+            sqlSession.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(sqlSession);
+        }
+
+    }
+
+    /**
+     * 批量删除
+     * @param ids
+     */
+    public void deleteBatch(List<Integer> ids){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = DBUtil.getSqlSession();
+            sqlSession.delete("Message.deleteBatch", ids);
+            sqlSession.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(sqlSession);
+        }
+    }
+
+
 
 }

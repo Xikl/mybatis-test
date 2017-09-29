@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Message {
 
     /** id */
-    private Long id;
+    private Integer id;
 
     /** 类别 */
     private String command;

@@ -24,6 +24,19 @@
     </if>
   </select>
 
+  <delete id="deleteOne" parameterType="Integer">
+    DELETE FROM message WHERE id = #{_parameter}
+  </delete>
+
+  <delete id="deleteBatch" parameterType="java.util.List">
+    DELETE FROM message WHERE id IN (
+            /*separator 中间为，添加*/
+            <foreach collection="list" item="item" separator=",">
+              #{item}
+            </foreach>
+    )
+  </delete>
+
   <!--<select id="version" parameterType="long" resultType="int">-->
     <!--SELECT version FROM user WHERE id = #{id,jdbcType=INTEGER}-->
   <!--</select>-->
