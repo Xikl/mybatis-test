@@ -25,4 +25,9 @@ public class Message {
     /** 内容 */
     private String content;
 
+    /**自定义构造函数*/
+    public Message(String command, String description) {
+        this.command = command;
+        this.description = description;
+    }
 }

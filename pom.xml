@@ -42,6 +42,12 @@
       <artifactId>lombok</artifactId>
       <version>1.16.18</version>
     </dependency>
+    <!--通过日志来动态调试sql语句-->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
 
     <!--此项目只体验mybatis的东西 不要整合-->
   </dependencies>

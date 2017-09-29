@@ -2,7 +2,6 @@ package com.ximo.dao;
 
 import com.ximo.domain.Message;
 import com.ximo.util.DBUtil;
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
@@ -17,16 +16,17 @@ public class MessageDao {
 
     /**
      * 查询列表
-     * @return
+     * @return messageList
      */
-    public List<Message> getMessageByCommandAndDescription(){
+    public List<Message> getMessageByCommandAndDescription(String command, String description){
         SqlSession sqlSession = null;
         List<Message> messageList = new ArrayList<>();
         try {
             //获得session
             sqlSession = DBUtil.getSqlSession();
+            Message message = new Message(command, description);
             //执行sql语句 获得相应的id属性
-            messageList = sqlSession.selectList("Message.getMessageList");
+            messageList = sqlSession.selectList("Message.getMessageList", message);
         } catch (IOException e) {
             e.printStackTrace();
         }finally {

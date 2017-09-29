@@ -1,5 +1,6 @@
 package com.ximo.dao;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class MessageDaoTest {
 
     @Test
     public void getMessageByCommandAndDescription() throws Exception {
-        messageDao.getMessageByCommandAndDescription();
+        messageDao.getMessageByCommandAndDescription("", "段子");
     }
 
 }

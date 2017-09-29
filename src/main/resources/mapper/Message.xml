@@ -14,8 +14,14 @@
     <result column="content" jdbcType="VARCHAR" property="content"/>
   </resultMap>
 
-  <select id="getMessageList" resultMap="MessageResult">
-    SELECT * FROM message
+  <select id="getMessageList" parameterType="com.ximo.domain.Message" resultMap="MessageResult">
+    SELECT * FROM message WHERE 1=1
+    <if test="command != null and command.trim().length() > 0">
+      and command=#{command}
+    </if>
+    <if test="description != null and description.trim().length() > 0">
+      and description LIKE '%' #{description} '%'
+    </if>
   </select>
 
   <!--<select id="version" parameterType="long" resultType="int">-->
