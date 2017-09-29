@@ -29,4 +29,10 @@
             </if>
         </where>
     </select>
+
+    <!--获取自增主键值-->
+    <insert id="addOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.ximo.domain.Command">
+      INSERT INTO command(name, description) VALUES (#{name}, #{description})
+    </insert>
+    
 </mapper>
