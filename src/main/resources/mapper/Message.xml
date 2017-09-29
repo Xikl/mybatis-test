@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间 可保证唯一-->
+<mapper namespace="Message">
+
+  <!--type为实体类的路径 id为唯一表示 在resultMap中-->
+  <resultMap type="com.ximo.domain.Message" id="MessageResult">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="command" jdbcType="VARCHAR" property="command"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+  </resultMap>
+
+  <select id="getMessageList" resultMap="MessageResult">
+    SELECT * FROM message
+  </select>
+
+  <!--<select id="version" parameterType="long" resultType="int">-->
+    <!--SELECT version FROM user WHERE id = #{id,jdbcType=INTEGER}-->
+  <!--</select>-->
+
+  <!--<delete id="delete" parameterType="UserAlias">-->
+    <!--DELETE FROM user WHERE id = #{id:INTEGER}-->
+  <!--</delete>-->
+
+  <!--<insert id="insert" parameterType="UserAlias" useGeneratedKeys="false">-->
+    <!--INSERT INTO user-->
+    <!--( id,-->
+    <!--username,-->
+    <!--password,-->
+    <!--administrator-->
+    <!--)-->
+    <!--VALUES-->
+    <!--( #{id},-->
+    <!--#{username,jdbcType=VARCHAR},-->
+    <!--#{password.encrypted:VARCHAR},-->
+    <!--#{administrator,jdbcType=BOOLEAN}-->
+    <!--)-->
+  <!--</insert>-->
+
+  <!--<update id="update" parameterType="UserAlias">-->
+    <!--UPDATE user SET-->
+    <!--username = #{username,jdbcType=VARCHAR},-->
+    <!--password = #{password.encrypted,jdbcType=VARCHAR},-->
+    <!--administrator = #{administrator,jdbcType=BOOLEAN}-->
+    <!--WHERE-->
+    <!--id = #{id,jdbcType=INTEGER}-->
+  <!--</update>-->
+
+  <!--&lt;!&ndash;   Unique constraint check &ndash;&gt;-->
+  <!--<select id="isUniqueUsername" parameterType="map" resultType="boolean">-->
+    <!--SELECT (count(*) = 0)-->
+    <!--FROM user-->
+    <!--WHERE ((#{userId,jdbcType=BIGINT} IS NOT NULL AND id != #{userId,jdbcType=BIGINT}) OR #{userId,jdbcType=BIGINT} IS-->
+    <!--NULL)  &lt;!&ndash; other than me &ndash;&gt;-->
+    <!--AND (username = #{username,jdbcType=VARCHAR})-->
+  <!--</select>-->
+</mapper>
