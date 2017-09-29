@@ -10,9 +10,7 @@ import lombok.Data;
 public class CommandContent {
 
     private Integer id;
-    private String command;
+    private String content;
     private Integer commandId;
-
-
 
 }

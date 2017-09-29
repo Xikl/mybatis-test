@@ -9,7 +9,7 @@
     <!--type为实体类的路径 id为唯一表示 在resultMap中-->
     <resultMap type="com.ximo.domain.CommandContent" id="CommandContentResult">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="command" jdbcType="VARCHAR" property="command"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
         <result column="command_id" jdbcType="INTEGER" property="commandId"/>
     </resultMap>
 

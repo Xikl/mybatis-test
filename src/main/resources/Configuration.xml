@@ -31,7 +31,9 @@
   </environments>
 
   <mappers>
-    <mapper resource="mapper/*.xml"/>
+    <mapper resource="mapper/Command.xml"/>
+    <mapper resource="mapper/CommandContent.xml"/>
+    <mapper resource="mapper/Message.xml"/>
   </mappers>
 
 </configuration>
