@@ -14,6 +14,6 @@ public class Command {
     private Integer id;
     private String name;
     private String description;
-    private List<CommandContent> commandContentList;
+    private List<CommandContent> contentList;
 
 }

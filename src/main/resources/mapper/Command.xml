@@ -8,9 +8,25 @@
 
     <!--type为实体类的路径 id为唯一表示 在resultMap中-->
     <resultMap type="com.ximo.domain.Command" id="CommandResult">
-        <id column="id" jdbcType="INTEGER" property="id"/>
+        <!--起一个别名-->
+        <id column="a_id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
+        <!--引用 CommandContext的resultMap-->
+        <collection property="contentList" resultMap="CommandContent.CommandContentResult"/>
     </resultMap>
 
+    <select id="getCommandList" parameterType="com.ximo.domain.Command" resultMap="CommandResult">
+        SELECT a.id a_id, a.name, a.description, b.id, b.content, b.command_id
+          FROM command a LEFT JOIN command_content b
+            ON a.id=b.command_id
+        <where>
+            <if test="name != null and name.trim().length() > 0">
+              AND a.name=#{name}
+            </if>
+            <if test="description != null and description.trim().length() > 0">
+              AND a.description LIKE '%' #{description} '%'
+            </if>
+        </where>
+    </select>
 </mapper>
