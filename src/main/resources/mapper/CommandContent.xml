@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间 可保证唯一-->
+<mapper namespace="CommandContent">
+
+    <!--type为实体类的路径 id为唯一表示 在resultMap中-->
+    <resultMap type="com.ximo.domain.CommandContent" id="CommandContentResult">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="command" jdbcType="VARCHAR" property="command"/>
+        <result column="command_id" jdbcType="INTEGER" property="commandId"/>
+    </resultMap>
+
+</mapper>
