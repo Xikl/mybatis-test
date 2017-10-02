@@ -26,7 +26,10 @@ public class MessageDao {
             sqlSession = DBUtil.getSqlSession();
             Message message = new Message(command, description);
             //执行sql语句 获得相应的id属性
-            messageList = sqlSession.selectList("Message.getMessageList", message);
+//            messageList = sqlSession.selectList("Message.getMessageList", message);
+            //面向接口编程
+            IMessage iMessage = sqlSession.getMapper(IMessage.class);
+            messageList = iMessage.getMessageList(message);
         } catch (IOException e) {
             e.printStackTrace();
         }finally {

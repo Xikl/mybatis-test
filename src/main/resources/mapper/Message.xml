@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--命名空间 可保证唯一-->
-<mapper namespace="Message">
+<mapper namespace="com.ximo.dao.IMessage">
 
   <!--type为实体类的路径 id为唯一表示 在resultMap中-->
   <resultMap type="com.ximo.domain.Message" id="MessageResult">
