@@ -12,5 +12,13 @@
         <result column="content" jdbcType="VARCHAR" property="content"/>
         <result column="command_id" jdbcType="INTEGER" property="commandId"/>
     </resultMap>
-
+    
+    <insert id="insertBatch" parameterType="java.util.List" >
+        INSERT INTO command_content(content, command_id) VALUES
+        <foreach collection="list" item="item" separator=",">
+          (#{item.content}, #{item.commandId})
+        </foreach>
+    </insert>
+    
+    
 </mapper>

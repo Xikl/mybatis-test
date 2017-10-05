@@ -1,6 +1,7 @@
 package com.ximo.dao;
 
 import com.ximo.domain.Command;
+import com.ximo.domain.CommandContent;
 import com.ximo.util.DBUtil;
 import org.apache.ibatis.session.SqlSession;
 
@@ -37,5 +38,23 @@ public class CommandDao {
         return commandList;
     }
 
+    /**
+     * 批量新增
+     * @param contents
+     */
+    public void insertBatch(List<CommandContent> contents){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = DBUtil.getSqlSession();
+            ICommandContent iCommandContent = sqlSession.getMapper(ICommandContent.class);
+            iCommandContent.insertBatch(contents);
+            //采用事务提交
+            sqlSession.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(sqlSession);
+        }
+    }
 
 }

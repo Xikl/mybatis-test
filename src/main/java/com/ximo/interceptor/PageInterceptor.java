@@ -21,6 +21,7 @@ import java.util.Properties;
  * 2017/10/5
  * 拦截prepare方法
  */
+//注解 过滤该方法
 @Intercepts({@Signature(type= StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class PageInterceptor implements Interceptor{
 
@@ -63,7 +64,7 @@ public class PageInterceptor implements Interceptor{
             //替换sql语句
             metaObject.setValue("delegate.boundSql.sql", pageSql);
         }
-        //通过反射 调用
+        //通过反射 调用 送回去
         return invocation.proceed();
     }
 
