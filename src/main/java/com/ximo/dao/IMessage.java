@@ -18,5 +18,10 @@ public interface IMessage {
     /** 分页统计*/
     Integer count(Message message);
 
+    /** 获得Message列表*/
+    List<Message> queryMessageListByPage(Map<String, Object> param);
+
+
+
 
 }

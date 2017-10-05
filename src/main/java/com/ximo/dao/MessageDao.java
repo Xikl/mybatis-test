@@ -92,6 +92,26 @@ public class MessageDao {
             DBUtil.close(sqlSession);
         }
         return result;
+    }
+
+    /**
+     * 拦截器 方法
+     * @param param
+     * @return
+     */
+    public List<Message> queryMessageListByPage(Map<String, Object> param){
+        SqlSession sqlSession = null;
+        List<Message> messageList = new ArrayList<>();
+        try {
+            sqlSession = DBUtil.getSqlSession();
+            IMessage iMessage = sqlSession.getMapper(IMessage.class);
+            messageList = iMessage.queryMessageListByPage(param);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(sqlSession);
+        }
+        return messageList;
 
     }
 
