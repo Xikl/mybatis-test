@@ -14,14 +14,17 @@
     <result column="content" jdbcType="VARCHAR" property="content"/>
   </resultMap>
 
-  <select id="getMessageList" parameterType="com.ximo.domain.Message" resultMap="MessageResult">
-    SELECT * FROM message WHERE 1=1
-    <if test="command != null and command.trim().length() > 0">
-      and command=#{command}
-    </if>
-    <if test="description != null and description.trim().length() > 0">
-      and description LIKE '%' #{description} '%'
-    </if>
+  <select id="getMessageList" parameterType="java.util.Map" resultMap="MessageResult">
+    SELECT * FROM message
+    <where>
+      <if test="command != null and command.trim().length() > 0">
+        and command=#{message.command}
+      </if>
+      <if test="description != null and description.trim().length() > 0">
+        and description LIKE '%' #{message.description} '%'
+      </if>
+      order by id limit #{page.dbIndex}, #{page.dbNumber}
+    </where>
   </select>
 
   <delete id="deleteOne" parameterType="Integer">

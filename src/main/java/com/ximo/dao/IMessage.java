@@ -3,6 +3,7 @@ package com.ximo.dao;
 import com.ximo.domain.Message;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 与Message中配置相对应的接口
@@ -12,7 +13,7 @@ import java.util.List;
 public interface IMessage {
 
     /** 获得Message列表*/
-    List<Message> getMessageList(Message message);
+    List<Message> getMessageList(Map<String, Object> param);
 
     /** 分页统计*/
     Integer count(Message message);

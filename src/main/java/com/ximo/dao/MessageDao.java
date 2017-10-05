@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 朱文赵
@@ -18,18 +19,17 @@ public class MessageDao {
      * 查询列表
      * @return messageList
      */
-    public List<Message> getMessageByCommandAndDescription(String command, String description){
+    public List<Message> getMessageList(Map<String, Object> param){
         SqlSession sqlSession = null;
         List<Message> messageList = new ArrayList<>();
         try {
             //获得session
             sqlSession = DBUtil.getSqlSession();
-            Message message = new Message(command, description);
             //执行sql语句 获得相应的id属性
 //            messageList = sqlSession.selectList("Message.getMessageList", message);
             //面向接口编程
             IMessage iMessage = sqlSession.getMapper(IMessage.class);
-            messageList = iMessage.getMessageList(message);
+            messageList = iMessage.getMessageList(param);
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
@@ -74,6 +74,11 @@ public class MessageDao {
         }
     }
 
+    /**
+     * 分页方法
+     * @param message
+     * @return
+     */
     public Integer count(Message message){
         SqlSession sqlSession = null;
         int result = 0;
