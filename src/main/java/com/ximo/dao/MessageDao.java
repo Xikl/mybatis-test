@@ -74,6 +74,22 @@ public class MessageDao {
         }
     }
 
+    public Integer count(Message message){
+        SqlSession sqlSession = null;
+        int result = 0;
+        try {
+            sqlSession = DBUtil.getSqlSession();
+            IMessage iMessage = sqlSession.getMapper(IMessage.class);
+            result = iMessage.count(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(sqlSession);
+        }
+        return result;
+
+    }
+
 
 
 }

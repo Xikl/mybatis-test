@@ -37,6 +37,18 @@
     )
   </delete>
 
+  <select id="count" parameterType="com.ximo.dao.IMessage" resultType="Integer">
+    SELECT count(*) FROM message
+    <where>
+      <if test="command != null and command.trim().length() > 0">
+        and command=#{command}
+      </if>
+      <if test="description != null and description.trim().length() > 0">
+        and description like '%' #{description} '%'
+      </if>
+    </where>
+  </select>
+
   <!--<select id="version" parameterType="long" resultType="int">-->
     <!--SELECT version FROM user WHERE id = #{id,jdbcType=INTEGER}-->
   <!--</select>-->

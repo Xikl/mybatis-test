@@ -11,7 +11,11 @@ import java.util.List;
  */
 public interface IMessage {
 
+    /** 获得Message列表*/
     List<Message> getMessageList(Message message);
+
+    /** 分页统计*/
+    Integer count(Message message);
 
 
 }

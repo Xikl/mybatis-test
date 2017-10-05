@@ -28,6 +28,12 @@ public class Page {
     /** 数据库部分 一共取多少条*/
     private Integer dbNumber;
 
+
+    public void setTotalNumber(Integer totalNumber) {
+        this.totalNumber = totalNumber;
+        this.count();
+    }
+
     /**
      *  更具当前属性计算相关值
      */
@@ -51,6 +57,5 @@ public class Page {
         }
         this.dbIndex = (this.currentPage - 1) * this.pageNumber;
         this.dbNumber = this.pageNumber;
-
     }
 }
